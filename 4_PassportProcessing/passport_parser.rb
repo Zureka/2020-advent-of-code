@@ -11,39 +11,42 @@ class PassportParser
     end
 
     def passport_info_valid?(info_str)
-      info_array = info_str.split(" ")
-      birth_year_valid?(info_array) &&
-        issue_year_valid?(info_array) &&
-        expiration_year_valid?(info_array) &&
-        height_valid?(info_array) &&
-        hair_color_valid?(info_array) &&
-        eye_color_valid?(info_array) &&
-        passport_id_valid?(info_array)
+      info = info_str.split(" ")
+      birth_year_valid?(info) &&
+        issue_year_valid?(info) &&
+        expiration_year_valid?(info) &&
+        height_valid?(info) &&
+        hair_color_valid?(info) &&
+        eye_color_valid?(info) &&
+        passport_id_valid?(info)
     end
 
     private
 
+    def get_key_value(key, info)
+      value_str = info.select { |i| i.include? key }[0]
+      value_str.split(":")[1]
+    end
+
     def year_valid?(info, field, min, max)
-      year_str = info.select { |i| i.include? field }[0]
-      year = year_str.split(":")[1].to_i
+      year = get_key_value(field, info).to_i
       year >= min && year <= max
     end
 
-    def birth_year_valid?(info_array)
-      year_valid?(info_array, "byr", 1920, 2002)
+    def birth_year_valid?(info)
+      year_valid?(info, "byr", 1920, 2002)
     end
 
-    def issue_year_valid?(info_array)
-      year_valid?(info_array, "iyr", 2010, 2020)
+    def issue_year_valid?(info)
+      year_valid?(info, "iyr", 2010, 2020)
     end
 
-    def expiration_year_valid?(info_array)
-      year_valid?(info_array, "eyr", 2020, 2030)
+    def expiration_year_valid?(info)
+      year_valid?(info, "eyr", 2020, 2030)
     end
 
-    def height_valid?(info_array)
-      value_str = info_array.select { |i| i.include? "hgt" }[0]
-      value = value_str.split(":")[1]
+    def height_valid?(info)
+      value = get_key_value("hgt", info)
 
       if value.include? "cm"
         height_cm = value.gsub("cm", "").to_i
@@ -56,15 +59,13 @@ class PassportParser
       end
     end
 
-    def hair_color_valid?(info_array)
-      value_str = info_array.select { |i| i.include? "hcl" }[0]
-      value = value_str.split(":")[1]
+    def hair_color_valid?(info)
+      value = get_key_value("hcl", info)
       /^#[a-f0-9]{6}$/.match?(value)
     end
 
-    def eye_color_valid?(info_array)
-      value_str = info_array.select { |i| i.include? "ecl" }[0]
-      value = value_str.split(":")[1]
+    def eye_color_valid?(info)
+      value = get_key_value("ecl", info)
 
       case value
       when "amb", "blu", "brn", "gry", "grn", "hzl", "oth"
@@ -74,9 +75,8 @@ class PassportParser
       end
     end
 
-    def passport_id_valid?(info_array)
-      value_str = info_array.select { |i| i.include? "pid" }[0]
-      value = value_str.split(":")[1]
+    def passport_id_valid?(info)
+      value = get_key_value("pid", info)
       /^[0-9]{9}$/.match?(value)
     end
   end
