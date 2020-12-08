@@ -9,3 +9,4 @@ This project contains my solutions to the [Advent of Code 2020](https://adventof
 - [Day 5 - Binary Boarding](./5_BinaryBoarding/)
 - [Day 6 - Custom Customs](./6_CustomCustoms/)
 - [Day 7 - Handy Haversacks](./7_HandyHaversacks/)
+- [Day 8 - Handheld Halting](./8_HandheldHalting/)
