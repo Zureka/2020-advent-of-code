@@ -22,13 +22,14 @@ bundle exec rake lint
 
 ## Exercises
 
-- [Day 1 - Report Repair](./1_ReportRepair/)
-- [Day 2 - Password Philosophy](./2_PasswordPhilosophy/)
-- [Day 3 - Toboggan Trajectory](./3_TobogganTrajectory/)
-- [Day 4 - Passport Processing](./4_PassportProcessing/)
-- [Day 5 - Binary Boarding](./5_BinaryBoarding/)
-- [Day 6 - Custom Customs](./6_CustomCustoms/)
-- [Day 7 - Handy Haversacks](./7_HandyHaversacks/)
-- [Day 8 - Handheld Halting](./8_HandheldHalting/)
-- [Day 9 - Encoding Error](./9_EncodingError/)
+- [Day 1 - Report Repair](./01_ReportRepair/)
+- [Day 2 - Password Philosophy](./02_PasswordPhilosophy/)
+- [Day 3 - Toboggan Trajectory](./03_TobogganTrajectory/)
+- [Day 4 - Passport Processing](./04_PassportProcessing/)
+- [Day 5 - Binary Boarding](./05_BinaryBoarding/)
+- [Day 6 - Custom Customs](./06_CustomCustoms/)
+- [Day 7 - Handy Haversacks](./07_HandyHaversacks/)
+- [Day 8 - Handheld Halting](./08_HandheldHalting/)
+- [Day 9 - Encoding Error](./09_EncodingError/)
+- [Day 10 - Adapter Array](./10_AdapterArray/)
 
