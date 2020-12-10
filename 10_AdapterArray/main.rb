@@ -10,7 +10,7 @@ joltages << joltages.max() + 3  # Final joltage
 joltages.sort!()
 
 def count_diffs(joltages)
-  joltage_diffs = {}
+  diffs = {}
 
   joltages.each_with_index do |joltage, i|
     next if i == 0
@@ -18,24 +18,24 @@ def count_diffs(joltages)
     other_joltage = joltages[i - 1]
     diff = (joltage - other_joltage).abs()
 
-    if joltage_diffs[diff]
-      joltage_diffs[diff] += 1
+    if diffs[diff]
+      diffs[diff] += 1
     else
-      joltage_diffs[diff] = 1
+      diffs[diff] = 1
     end
   end
 
-  joltage_diffs
+  diffs
 end
 
-def is_chain_valid(joltage_diffs)
-  joltage_diffs.keys.none? { |k| k > 3 }
+def is_chain_valid(diffs)
+  diffs.keys.none? { |k| k > 3 }
 end
 
-diffs = count_diffs(joltages)
+joltage_diffs = count_diffs(joltages)
 
 puts "\n--- Part 1 ---"
-puts "There were #{diffs[1]} 1-volt differences and #{diffs[3]} 3-volt differences"
-puts "Multiplied together they equal #{diffs[1] * diffs[3]}"
+puts "There were #{joltage_diffs[1]} 1-volt differences and #{joltage_diffs[3]} 3-volt differences"
+puts "Multiplied together they equal #{joltage_diffs[1] * joltage_diffs[3]}"
 
 
