@@ -32,4 +32,5 @@ bundle exec rake lint
 - [Day 8 - Handheld Halting](./08_HandheldHalting/)
 - [Day 9 - Encoding Error](./09_EncodingError/)
 - [Day 10 - Adapter Array](./10_AdapterArray/)
-
+- [Day 11 - Seating System](./11_SeatingSystem/)
+- [Day 12 - Rain Risk](./12_RainRisk/)
