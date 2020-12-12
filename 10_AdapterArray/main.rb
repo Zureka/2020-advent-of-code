@@ -1,21 +1,23 @@
-joltages = []
+require_relative "helpers"
+
+adapters = []
 
 File.open('data.txt').each do |line|
-  joltages << line.to_i
+  adapters << line.to_i
 end
 
-joltages << 0                   # Initial joltage
-joltages << joltages.max() + 3  # Final joltage
+adapters << 0                   # Initial joltage
+adapters << adapters.max() + 3  # Final joltage
 
-joltages.sort!()
+adapters.sort!()
 
 def count_diffs(joltages)
   diffs = {}
 
-  joltages.each_with_index do |joltage, i|
+  adapters.each_with_index do |joltage, i|
     next if i == 0
 
-    other_joltage = joltages[i - 1]
+    other_joltage = adapters[i - 1]
     diff = (joltage - other_joltage).abs()
 
     if diffs[diff]
@@ -32,10 +34,18 @@ def is_chain_valid(diffs)
   diffs.keys.none? { |k| k > 3 }
 end
 
-joltage_diffs = count_diffs(joltages)
+joltage_diffs = count_diffs(adapters)
 
 puts "\n--- Part 1 ---"
 puts "There were #{joltage_diffs[1]} 1-volt differences and #{joltage_diffs[3]} 3-volt differences"
 puts "Multiplied together they equal #{joltage_diffs[1] * joltage_diffs[3]}"
+
+
+puts "\n--- Part 2 ---"
+
+helper = JoltageHelpers.new(adapters)
+possible_path_count = helper.count_adapter_paths()
+
+puts "There are #{possible_path_count} possible paths with the given adapters"
 
 
